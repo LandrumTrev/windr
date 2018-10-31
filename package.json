@@ -1,0 +1,34 @@
+{
+  "name": "windr",
+  "version": "1.0.0",
+  "description": "A Node.js and Express server based personality-matching survey",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LandrumTrev/windr.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "server",
+    "personality",
+    "match",
+    "matching",
+    "survey",
+    "quiz"
+  ],
+  "author": "Richard Trevillian",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/LandrumTrev/windr/issues"
+  },
+  "homepage": "https://github.com/LandrumTrev/windr#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}
