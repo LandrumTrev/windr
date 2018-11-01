@@ -11,22 +11,26 @@
 // DEPENDENCIES (NPM MODULES)
 // =============================================================
 var express = require("express");
-var path = require("path");
-
-
-// MODULE IMPORTS (ROUTES and DATA)
-// =============================================================
-var apiRoutes = require("./app/routing/apiRoutes.js");
-var htmlRoutes = require("./app/routing/htmlRoutes.js");
-var friends = require("./app/data/friends.js");
 
 
 // EXPRESS SERVER CONFIG
 // =============================================================
+// creates a variable for calling the express() server function
 var app = express();
 
-// process.env.PORT lets Heroku determine the default port
+// process.env.PORT lets Heroku determine the default port, or use 3000 locally
 var PORT = process.env.PORT || 3000;
+
+
+// ROUTER
+// =============================================================
+var apiRoutes = require("./app/routing/apiRoutes.js");
+var htmlRoutes = require("./app/routing/htmlRoutes.js");
+
+// require("./app/routing/apiRoutes")(app);
+// require("./app/routing/htmlRoutes")(app);
+
+
 
 
 // EXPRESS SERVER MIDDLEWARE

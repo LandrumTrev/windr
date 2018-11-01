@@ -9,76 +9,61 @@
 
 // CONFIRM CONNECTION
 // =====================================================
-console.log("apiRoutes.js connected");
+// console.log("apiRoutes.js connected");
 
 
-// DEPENDENCIES (NPM MODULES)
+// IMPORT DATA
 // =============================================================
-var express = require("express");
-var path = require("path");
-
-
-// MODULE IMPORTS (ROUTES and DATA)
-// =============================================================
-// var friends = require("../data/friends.js");
-
-
-// EXPRESS SERVER CONFIG
-// =============================================================
-var app = express();
-
-
-// EXPRESS SERVER MIDDLEWARE
-// =============================================================
-// allow Express server to accept URL encoded data,
-// extended to also allow URL encoded JSON objects and arrays
-app.use(express.urlencoded({ extended: true }));
-
-// allow Express server to accept JSON data (for POSTs)
-app.use(express.json());
-
-// allow Express server to server static files from PUBLIC directory
-app.use(express.static('public'));
-
+// import the "friends" data to apiRoutes.js,
+// so that the routes below can read and write to it
+var friends = require("../data/friends");
 
 
 // API ROUTES
 // =============================================================
 
-// app.get() handles GET requests that come into the server
+module.exports = function (app) {
 
-// Displays all characters
-app.get("/api/friends", function (req, res) {
-    return res.json(friends);
-});
-
-
-// app.post() handles POST requests that come into the server
-// use Postman app to manually send POST requests to server for testing
-// Create New Characters - takes in JSON input
-app.post("/api/friends", function (req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
-    var newcharacter = req.body;
-
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
-
-    console.log(newcharacter);
-
-    characters.push(newcharacter);
-
-    res.json(newcharacter);
-});
+    // captures URL GET request to: domain/api/friends
+    app.get("/api/friends", function (req, res) {
+        // returns friends.js data to browser as JSON
+        res.json(friends);
+    });
 
 
+    // =====================================================
 
-// INSTRUCTIONS
-// =====================================================
 
-// 4. Your `apiRoutes.js` file should contain two routes:
+    // captures URL POST request to: domain/api/friends
+    app.post("/api/friends", function (req, res) {
 
-//    * A GET route with the url `/api/friends`. This will be used to display a JSON of all possible friends.
-//    * A POST routes `/api/friends`. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic. 
+        // app.use(express.json()); middleware allows
+        // req.body to accept incoming JSON data as a POST:
+        // .push the JSON object (req.body) into the array "friends"
+        friends.push(req.body);
 
+        // dev only: return value "true" as JSON to browser
+        res.json(true);
+
+        // production: 
+        // handles incoming survey results
+        // handles compatibility logic
+        // return modal with name and photo of match
+
+    });
+
+
+    // =====================================================
+
+
+    // dev route: if needed, clears all data from friends.js
+    app.post("/api/clear", function (req, res) {
+        // Empty out the arrays of data
+        friends.length = [];
+        // returns a simple JSON object to browser as confirm message
+        res.json({
+            ok: true
+        });
+    });
+
+};
