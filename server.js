@@ -22,17 +22,6 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 
-// ROUTER
-// =============================================================
-var apiRoutes = require("./app/routing/apiRoutes.js");
-var htmlRoutes = require("./app/routing/htmlRoutes.js");
-
-// require("./app/routing/apiRoutes")(app);
-// require("./app/routing/htmlRoutes")(app);
-
-
-
-
 // EXPRESS SERVER MIDDLEWARE
 // =============================================================
 // allow Express server to accept URL encoded data,
@@ -46,27 +35,17 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
-
-// LOGIC
+// ROUTER
 // =============================================================
 
-// 6. Determine the user's most compatible friend using the following as a guide:
+// require the file path from server.js to apiRoutes.js
+// and pass in (app) which is express(), to the require,
+// which allows the anonymous function(app) in apiRoutes.js
+// to use the express() server methods
+require("./app/routing/apiRoutes")(app);
 
-//    * Convert each user's results into a simple array of numbers (ex: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`).
-//    * With that done, compare the difference between current user's scores against those from other users, question by question. Add up the differences to calculate the `totalDifference`.
-//      * Example: 
-//        * User 1: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
-//        * User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
-//        * Total Difference: **2 + 1 + 2 =** **_5_**
-//    * Remember to use the absolute value of the differences. Put another way: no negative solutions! Your app should calculate both `5-3` and `3-5` as `2`, and so on. 
-//    * The closest match will be the user with the least amount of difference.
-
-// 7. Once you've found the current user's most compatible friend, display the result as a modal pop-up.
-//    * The modal should display both the name and picture of the closest match.
-
-
-
-
+// same-same with htmlRoutes
+require("./app/routing/htmlRoutes")(app);
 
 
 // START SERVER, CONFIRM LISTENING

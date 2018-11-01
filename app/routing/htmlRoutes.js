@@ -10,7 +10,7 @@
 
 // CONFIRM CONNECTION
 // =====================================================
-// console.log("htmlRoutes.js connected");
+console.log("htmlRoutes.js connected");
 
 
 // DEPENDENCIES (NPM MODULES)
