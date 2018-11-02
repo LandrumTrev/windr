@@ -12,6 +12,9 @@
 // =============================================================
 var express = require("express");
 
+// require path for use by htmlRoutes
+var path = require("path");
+
 
 // EXPRESS SERVER CONFIG
 // =============================================================
@@ -22,7 +25,7 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 
-// EXPRESS SERVER MIDDLEWARE
+// INITIALIZE EXPRESS SERVER MIDDLEWARE TO HANDLE URLs AND JSON DATA
 // =============================================================
 // allow Express server to accept URL encoded data,
 // extended to also allow URL encoded JSON objects and arrays
@@ -32,20 +35,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // allow Express server to server static files from PUBLIC directory
+// is this needed? for external CSS files?
 app.use(express.static('public'));
 
 
-// ROUTER
+// REQUIRE ROUTER PATH FUNCTION MODULES
 // =============================================================
 
-// require the file path from server.js to apiRoutes.js
-// and pass in (app) which is express(), to the require,
-// which allows the anonymous function(app) in apiRoutes.js
-// to use the express() server methods
+// pass in Express module functions (app) to apiRoutes exported function
 require("./app/routing/apiRoutes")(app);
 
-// same-same with htmlRoutes
-require("./app/routing/htmlRoutes")(app);
+// require htmlRoutes which exports a function,
+// and pass in Express() module functions as (app) to it
+require("./app/routing/htmlRoutes")(app, path);
 
 
 // START SERVER, CONFIRM LISTENING

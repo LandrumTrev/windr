@@ -270,17 +270,24 @@
                 };
 
                 // AJAX post the data to the friends API.
+                // send the POST to domain/api/friends (handled by apiRoutes.js)
+                // send the userData object as the body of the POST
+                // (data) is the Response (res) data sent back by apiRoutes.js
                 $.post("/api/friends", userData, function (data) {
 
-                    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+                    // (data) is data returned by apiRoutes.js function
+
+                    // put data.name into the Modal's #match-name element
                     $("#match-name").text(data.name);
+                    // put data.photo into the Modal's #match-img <img> element
                     $("#match-img").attr("src", data.photo);
 
-                    // Show the modal with the best match
+                    // toggle the modal to display it with match name and image
                     $("#results-modal").modal("toggle");
 
                 });
             } else {
+                // but if validateForm() above fails (if not all fields have a value)
                 alert("Please fill out all fields before submitting!");
             }
         });

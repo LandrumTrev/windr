@@ -13,17 +13,13 @@
 console.log("htmlRoutes.js connected");
 
 
-// DEPENDENCIES (NPM MODULES)
-// =====================================================
-var path = require("path");
-
-
 // ROUTES (inside exported function)
 // =====================================================
 
 // use module.exports directly on an anonymous function
 // pass in (app) which is the express() server module
-module.exports = function (app) {
+// path in (path) which is required in server.js
+module.exports = function (app, path) {
 
     // captures URL: domain/survey
     app.get("/survey", function (req, res) {
