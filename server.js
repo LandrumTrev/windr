@@ -64,8 +64,8 @@ app.listen(PORT, function () {
 
 console.log("\n====== Logical, captain. =======\n");
 
-var a1 = [5, 1, 4, 4, 5, 1, 2, 5, 4, 1];
-// console.log(a1);
+var rq = [5, 1, 4, 4, 5, 1, 2, 5, 4, 1];
+// console.log(rq);
 
 var a2 = [3, 2, 6, 4, 5, 1, 2, 5, 4, 1];
 // console.log(a2);
@@ -92,47 +92,71 @@ for (let h = 0; h < friends.length; h++) {
   scoresArray.push(aFriend);
 
 }
-console.log(scoresArray);
+// console.log(scoresArray);
 
 // =============================================================
 
-var diffArray = [];
+matchDiffsArray = [];
 
-for (let i = 0; i < a1.length; i++) {
+for (let k = 0; k < scoresArray.length; k++) {
 
-  var userAnswer = a1[i];
-  var matchAnswer = a2[i];
+  var userScores = a4;
+  // console.log("userScores");
+  // console.log(userScores);
 
-  // var diffAnswer = Math.abs(a2[i] - a1[i]);
-  var diffAnswer = Math.abs(userAnswer - matchAnswer);
-  // console.log(diffAnswer);
-  diffArray.push(diffAnswer);
+  var friendScores = scoresArray[k];
+  // console.log("friendScores");
+  // console.log(friendScores);
+
+  var diffArray = [];
+
+  for (let i = 0; i < userScores.length; i++) {
+
+    var userAnswer = userScores[i];
+    // console.log("userAnswer " + userAnswer);
+
+    var matchAnswer = friendScores[i];
+    // console.log("matchAnswer " + matchAnswer);
+
+    var diffAnswer = Math.abs(userAnswer - matchAnswer);
+    // console.log("diffAnswer " + diffAnswer);
+    diffArray.push(diffAnswer);
+
+  }
+  // console.log(diffArray);
+
+  var diffSum = diffArray.reduce((a, b) => a + b, 0);
+  // console.log(diffSum);
+
+  matchDiffsArray.push(diffSum);
 
 }
-// console.log(diffArray);
 
-var diffSum = diffArray.reduce((a, b) => a + b, 0);
-// console.log(diffSum);
+console.log(matchDiffsArray);
+
+var theMatch = Math.min(...matchDiffsArray);
+console.log(theMatch);
+
 
 // =============================================================
 
+// var diffArray = [];
 
+// for (let i = 0; i < rq.length; i++) {
 
-
-
-
-
-
-
-// for (let i = 0; i < a1.length; i++) {
-
-//   var userAnswer = a1[i];
+//   var userAnswer = rq[i];
 //   var matchAnswer = a2[i];
 
-//   // var diffAnswer = Math.abs(a2[i] - a1[i]);
+//   // var diffAnswer = Math.abs(a2[i] - rq[i]);
 //   var diffAnswer = Math.abs(userAnswer - matchAnswer);
 //   // console.log(diffAnswer);
 //   diffArray.push(diffAnswer);
 
 // }
-// console.log(diffArray);
+// // console.log(diffArray);
+
+// var diffSum = diffArray.reduce((a, b) => a + b, 0);
+// // console.log(diffSum);
+
+// =============================================================
+
