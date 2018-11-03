@@ -36,6 +36,25 @@ module.exports = function (app) {
 
     // captures URL POST request to: domain/api/friends
     app.post("/api/friends", function (req, res) {
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // app.use(express.json()); middleware allows
         // req.body to accept incoming JSON data as a POST:

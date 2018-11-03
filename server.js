@@ -29,7 +29,9 @@ var PORT = process.env.PORT || 3000;
 // =============================================================
 // allow Express server to accept URL encoded data,
 // extended to also allow URL encoded JSON objects and arrays
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 
 // allow Express server to accept JSON data (for POSTs)
 app.use(express.json());
@@ -52,7 +54,43 @@ require("./app/routing/htmlRoutes")(app, path);
 
 // START SERVER, CONFIRM LISTENING
 // =============================================================
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
-  
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
+});
+
+
+// MATCH LOGIC
+// =============================================================
+
+console.log("\n====== Logical, captain. =======\n");
+
+var a1 = [5, 1, 4, 4, 5, 1, 2, 5, 4, 1];
+console.log(a1);
+
+var a2 = [3, 2, 6, 4, 5, 1, 2, 5, 4, 1];
+console.log(a2);
+
+var a3 = [5, 1, 2, 1, 3, 4, 1, 3, 6, 2];
+console.log(a3);
+
+var a4 = [2, 3, 1, 2, 1, 3, 4, 1, 3, 5];
+console.log(a4);
+
+
+var diffArray = [];
+
+for (let i = 0; i < a1.length; i++) {
+
+  var userAnswer = a1[i];
+  var matchAnswer = a2[i];
+
+  // var diffAnswer = Math.abs(a2[i] - a1[i]);
+  var diffAnswer = Math.abs(userAnswer - matchAnswer);
+  // console.log(diffAnswer);
+  diffArray.push(diffAnswer);
+
+}
+// console.log(diffArray);
+
+var diffSum = diffArray.reduce((a, b) => a + b, 0);
+console.log(diffSum);
