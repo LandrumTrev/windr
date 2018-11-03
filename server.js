@@ -132,31 +132,23 @@ for (let k = 0; k < scoresArray.length; k++) {
 
 }
 
-console.log(matchDiffsArray);
+console.log("matchDiffsArray " + matchDiffsArray);
 
 var theMatch = Math.min(...matchDiffsArray);
-console.log(theMatch);
+console.log("theMatch " + theMatch);
 
+for (let k = 0; k < matchDiffsArray.length; k++) {
 
-// =============================================================
+  var matchFinder = matchDiffsArray[k];
+  // console.log("matchFinder " + matchFinder);
 
-// var diffArray = [];
+  var matchName = friends[k].name;
+  // console.log("matchName " + matchName);
 
-// for (let i = 0; i < rq.length; i++) {
+  if (theMatch === matchFinder) {
 
-//   var userAnswer = rq[i];
-//   var matchAnswer = a2[i];
+    console.log("matchName " + matchName);
 
-//   // var diffAnswer = Math.abs(a2[i] - rq[i]);
-//   var diffAnswer = Math.abs(userAnswer - matchAnswer);
-//   // console.log(diffAnswer);
-//   diffArray.push(diffAnswer);
+  }
 
-// }
-// // console.log(diffArray);
-
-// var diffSum = diffArray.reduce((a, b) => a + b, 0);
-// // console.log(diffSum);
-
-// =============================================================
-
+}
