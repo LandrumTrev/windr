@@ -65,17 +65,36 @@ app.listen(PORT, function () {
 console.log("\n====== Logical, captain. =======\n");
 
 var a1 = [5, 1, 4, 4, 5, 1, 2, 5, 4, 1];
-console.log(a1);
+// console.log(a1);
 
 var a2 = [3, 2, 6, 4, 5, 1, 2, 5, 4, 1];
-console.log(a2);
+// console.log(a2);
 
 var a3 = [5, 1, 2, 1, 3, 4, 1, 3, 6, 2];
-console.log(a3);
+// console.log(a3);
 
 var a4 = [2, 3, 1, 2, 1, 3, 4, 1, 3, 5];
-console.log(a4);
+// console.log(a4);
 
+var friends = require("./app/data/friends");
+// console.log(friends[0].scores);
+
+
+// =============================================================
+
+var scoresArray = [];
+
+for (let h = 0; h < friends.length; h++) {
+
+  var aFriend = friends[h].scores;
+  // console.log(aFriend);
+
+  scoresArray.push(aFriend);
+
+}
+console.log(scoresArray);
+
+// =============================================================
 
 var diffArray = [];
 
@@ -93,4 +112,27 @@ for (let i = 0; i < a1.length; i++) {
 // console.log(diffArray);
 
 var diffSum = diffArray.reduce((a, b) => a + b, 0);
-console.log(diffSum);
+// console.log(diffSum);
+
+// =============================================================
+
+
+
+
+
+
+
+
+
+// for (let i = 0; i < a1.length; i++) {
+
+//   var userAnswer = a1[i];
+//   var matchAnswer = a2[i];
+
+//   // var diffAnswer = Math.abs(a2[i] - a1[i]);
+//   var diffAnswer = Math.abs(userAnswer - matchAnswer);
+//   // console.log(diffAnswer);
+//   diffArray.push(diffAnswer);
+
+// }
+// console.log(diffArray);
