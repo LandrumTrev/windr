@@ -7,6 +7,9 @@ https://a1-images.myspacecdn.com/images02/141/0e97ee524f594974a950c364d5e0eca4/f
 Trillian
 https://www.spiritualityandpractice.com/uploads/film_reviews/images/hitchhikerslrg5.jpg
 
+{"name":"Trillian","photo":"https://www.spiritualityandpractice.com/uploads/film_reviews/images/hitchhikerslrg5.jpg","scores":["5","1","1","1","1","1","1","1","5","5"]}
+
+
 Arthur Dent
 https://vignette.wikia.nocookie.net/muppet/images/6/6a/Arthur2.jpg/revision/latest?cb=20060903120719
 

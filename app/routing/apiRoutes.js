@@ -37,7 +37,8 @@ module.exports = function (app) {
     // captures URL POST request to: domain/api/friends
     app.post("/api/friends", function (req, res) {
 
-        // console.log(req.body);
+        var userData = req.body;
+        // console.log(userData);
 
         // GENERATE matchDiffArray TO HOLD ALL USER-TO-friend MATCH SCORES
         // =============================================================
@@ -50,61 +51,73 @@ module.exports = function (app) {
         // each loop will compare userScores array to one friends[k].scores array
         for (let k = 0; k < friends.length; k++) {
 
-            // the array of a friends array objet's scores
+            // the .scores array from a friends object
             var friendScores = friends[k].scores;
             // console.log(friendScores);
 
-            // create a variable to hold the array of req.body.scores
-            var userScores = req.body.scores;
+            // the .scores array from the user
+            var userScores = userData.scores;
             // console.log(userScores);
 
-            // create an array to hold the difference scores for each question
-            // each number in the array is the absolute difference between answers
+            // an array that will hold user-friend difference scores for each anwser
+            // each number is the absolute (non-negative) difference between same answer
             var diffArray = [];
 
-            // loop through the length of the userScores array
+            // while we're converting the userScores strings into numbers,
+            // let's create an new array for them that we can push into friends later
+            var userScoresNumbers = [];
+
+            // loop through the length of the userScores array (one loop for each answer)
             for (let i = 0; i < userScores.length; i++) {
 
-                // set a variable for each score in the userScores array
-                var userAnswer = userScores[i];
-                // console.log("userAnswer " + userAnswer);
+                // set a variable for each answer's score in the userScores array
+                // use parseInt to turn the JSON's string numbers into Numbers
+                var userAnswer = parseInt(userScores[i]);
+                // console.log(userAnswer);
 
-                // set a variable for the same score in the friendScores array
+                // .push converted userScores numbers into userScoresNumbers array
+                // so we can .push that as .score data into the friends array
+                userScoresNumbers.push(userAnswer);
+
+                // set a variable for the same answer's score in the friendScores array
                 var matchAnswer = friendScores[i];
-                // console.log("matchAnswer " + matchAnswer);
+                // console.log(matchAnswer);
 
                 // and use Math.abs to get the absolute (non-negative) value
-                // of the difference (subtract) between each userAnswer and matchAnswer
+                // of the difference between a question's userAnswer and matchAnswer
                 var diffAnswer = Math.abs(userAnswer - matchAnswer);
                 // console.log("diffAnswer " + diffAnswer);
 
                 // and then .push each answers difference into an array
-                // of all answer differences between the user and compared friend
+                // of all answer differences between the user and one compared friend
                 diffArray.push(diffAnswer);
 
             }
             // and then console the diffArray for each user-friend comparison looped 
             // console.log(diffArray);
 
-            // then take each diffArray and add all its numbers together into a single value
+            // then take each diffArray and add its numbers together into a single value
+            // this is the difference score number for each user-friend comparison
             var diffSum = diffArray.reduce((a, b) => a + b, 0);
             // console.log(diffSum);
 
-            // take all diffSum single numbers and push them into the matchDiffsArray
-            // this is an array of difference scores between the user and each friend
+            // take all diffSum comparison scores and push them into the matchDiffsArray
+            // this is an array of all difference scores between the user and all friends
             matchDiffsArray.push(diffSum);
 
         }
         // console matchDiffsArray to check it
         // console.log(matchDiffsArray);
 
+        // console the converted numbers userScoresNumbers array 
+        console.log(userScoresNumbers);
 
         // =============================================================
 
 
         // then find the lowest number in matchDiffsArray (least differences, best match)
-        var theMatch = Math.min(...matchDiffsArray);
-        // console.log("theMatch " + theMatch);
+        var matchNumber = Math.min(...matchDiffsArray);
+        // console.log("matchNumber " + matchNumber);
 
         // loop through the length of matchedDiffsArray
         // which is the same length as the friends array
@@ -118,9 +131,9 @@ module.exports = function (app) {
             var matchFriend = friends[k];
             // console.log(matchFriend);
 
-            // if theMatch (lowest number in matchDiffsArray) equals
+            // if matchNumber (lowest number in matchDiffsArray) equals
             // a (the first matching) number in the matchDiffsArray,
-            if (theMatch === matchFinder) {
+            if (matchNumber === matchFinder) {
 
                 // then console the same numbered array object from the friends array
                 console.log(matchFriend);
@@ -128,8 +141,13 @@ module.exports = function (app) {
                 // then return the matchFriend object as the value of the function
                 res.json(matchFriend);
 
-                // push the new user's info into the friends array
-                friends.push(userData);
+                // and push the new user's info into the friends array
+                // using the array of converted .score Numbers (not JSON String numbers)
+                friends.push({
+                    name: userData.name,
+                    photo: userData.photo,
+                    scores: userScoresNumbers
+                });
 
             }
 
@@ -152,31 +170,3 @@ module.exports = function (app) {
     });
 
 };
-
-
-
-// LOGIC
-// =============================================================
-
-// 6. Determine the user's most compatible friend using the following as a guide:
-
-//    * Convert each user's results into a simple array of numbers (ex: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`).
-
-//    * With that done, compare the difference between current user's scores against those from other users, question by question. Add up the differences to calculate the `totalDifference`.
-
-//      * Example: 
-//        * User 1: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
-//        * User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
-//        * Total Difference: **2 + 1 + 2 =** **_5_**
-
-//    * Remember to use the absolute value of the differences. Put another way: no negative solutions! Your app should calculate both `5-3` and `3-5` as `2`, and so on. 
-
-//    * The closest match will be the user with the least amount of difference.
-
-// =============================================================
-
-// 7. Once you've found the current user's most compatible friend, display the result as a modal pop-up.
-
-//    * The modal should display both the name and picture of the closest match.
-
-// modal code is in the survey.html page
