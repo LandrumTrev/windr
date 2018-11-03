@@ -8,7 +8,7 @@
 // =====================================================
 
 // CONFIRM CONNECTION
-// =====================================================
+// =============================================================
 console.log("apiRoutes.js connected");
 
 
@@ -19,7 +19,7 @@ console.log("apiRoutes.js connected");
 var friends = require("../data/friends");
 
 
-// API ROUTES
+// API ROUTES - EXPORT ALL API ROUTES AS A SINGLE FUNCTION
 // =============================================================
 
 module.exports = function (app) {
@@ -31,43 +31,109 @@ module.exports = function (app) {
     });
 
 
-    // =====================================================
+    // =============================================================
 
 
     // captures URL POST request to: domain/api/friends
     app.post("/api/friends", function (req, res) {
-        
+
+        // console.log(req.body);
+
+        // GENERATE matchDiffArray TO HOLD ALL USER-TO-friend MATCH SCORES
+        // =============================================================
+        // create matchDiffsArray to hold a single number for each object in friends,
+        // that number being the total numeric difference between user and each friend
+        // (sum of all individual question differences), lower number = less differences
+        matchDiffsArray = [];
+
+        // loop through the length of the friends array
+        // each loop will compare userScores array to one friends[k].scores array
+        for (let k = 0; k < friends.length; k++) {
+
+            // the array of a friends array objet's scores
+            var friendScores = friends[k].scores;
+            // console.log(friendScores);
+
+            // create a variable to hold the array of req.body.scores
+            var userScores = req.body.scores;
+            // console.log(userScores);
+
+            // create an array to hold the difference scores for each question
+            // each number in the array is the absolute difference between answers
+            var diffArray = [];
+
+            // loop through the length of the userScores array
+            for (let i = 0; i < userScores.length; i++) {
+
+                // set a variable for each score in the userScores array
+                var userAnswer = userScores[i];
+                // console.log("userAnswer " + userAnswer);
+
+                // set a variable for the same score in the friendScores array
+                var matchAnswer = friendScores[i];
+                // console.log("matchAnswer " + matchAnswer);
+
+                // and use Math.abs to get the absolute (non-negative) value
+                // of the difference (subtract) between each userAnswer and matchAnswer
+                var diffAnswer = Math.abs(userAnswer - matchAnswer);
+                // console.log("diffAnswer " + diffAnswer);
+
+                // and then .push each answers difference into an array
+                // of all answer differences between the user and compared friend
+                diffArray.push(diffAnswer);
+
+            }
+            // and then console the diffArray for each user-friend comparison looped 
+            // console.log(diffArray);
+
+            // then take each diffArray and add all its numbers together into a single value
+            var diffSum = diffArray.reduce((a, b) => a + b, 0);
+            // console.log(diffSum);
+
+            // take all diffSum single numbers and push them into the matchDiffsArray
+            // this is an array of difference scores between the user and each friend
+            matchDiffsArray.push(diffSum);
+
+        }
+        // console matchDiffsArray to check it
+        // console.log(matchDiffsArray);
 
 
+        // =============================================================
 
 
+        // then find the lowest number in matchDiffsArray (least differences, best match)
+        var theMatch = Math.min(...matchDiffsArray);
+        // console.log("theMatch " + theMatch);
 
+        // loop through the length of matchedDiffsArray
+        // which is the same length as the friends array
+        for (let k = 0; k < matchDiffsArray.length; k++) {
 
+            // create a variable for each matchDiffsArray score
+            var matchFinder = matchDiffsArray[k];
+            // console.log("matchFinder " + matchFinder);
 
+            // create a variable for each friend
+            var matchFriend = friends[k];
+            // console.log(matchFriend);
 
+            // if theMatch (lowest number in matchDiffsArray) equals
+            // a (the first matching) number in the matchDiffsArray,
+            if (theMatch === matchFinder) {
 
+                // then console the same numbered array object from the friends array
+                console.log(matchFriend);
 
+                // then return the matchFriend object as the value of the function
+                res.json(matchFriend);
 
+                // push the new user's info into the friends array
+                friends.push(userData);
 
+            }
 
-
-
-
-
-
-
-        // app.use(express.json()); middleware allows
-        // req.body to accept incoming JSON data as a POST:
-        // .push the JSON object (req.body) into the array "friends"
-        friends.push(req.body);
-
-        // dev only: return value "true" as JSON to browser
-        res.json(true);
-
-        // production: 
-        // handles incoming survey results
-        // handles compatibility logic
-        // return modal with name and photo of match
+        }
 
     });
 
