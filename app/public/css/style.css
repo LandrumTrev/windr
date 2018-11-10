@@ -56,19 +56,40 @@ body {
 
 #bottom-bar {
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     background-color: rgb(241, 251, 255);
     height: 30px;
-    line-height: 30px;
-    /* text-align: center; */
-    /* padding-top: 2px; */
 }
 
 #footer-text {
-    z-index: 1;
+    /* z-index: 1; */
     position: absolute;
     right: 10px;
+    bottom: 0px;
     letter-spacing: .15rem;
+    line-height: 0px;
+    font-weight: 900;
+    color: rgb(121, 150, 162);
+    font-family: 'Oswald', sans-serif;
+    /* SEE MEDIA QUERIES */
+}
+
+/* DUPLICATE SHOWN-QUIZ FOOTER STYLE BELOW */
+
+#quiz-bottom-bar {
+    position: relative;
+    bottom: 0px;
+    background-color: rgb(241, 251, 255);
+    height: 30px;
+}
+
+#quiz-footer-text {
+    /* z-index: 1; */
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    letter-spacing: .15rem;
+    line-height: 0px;
     font-weight: 900;
     color: rgb(121, 150, 162);
     font-family: 'Oswald', sans-serif;
@@ -166,6 +187,9 @@ input {
 /* FOOTER STYLES ABOVE */
 /* =================== */
 /* MEDIA QUERIES BELOW */
+
+/* MEDIA QUERIES FOR BREAKPOINTS BELOW */
+/* =================================== */
 
 /* Extra small devices (phones, 575px and down) */
 @media only screen and (max-width: 575px) {
@@ -311,4 +335,5 @@ input {
 
 }
 
-/* MEDIA QUERIES ABOVE */
+/* MEDIA QUERIES FOR BREAKPOINTS ABOVE */
+/* =================================== */

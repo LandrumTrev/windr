@@ -7,6 +7,7 @@
       $("#showquiz").on("click", function (event) {
           // use jQuery .toggle() to toggle display:none / display:block
           $("#quizbody").toggle();
+          $("#bottom-bar").toggle();
       });
 
 
