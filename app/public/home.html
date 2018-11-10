@@ -35,7 +35,6 @@
 <body>
 
     <header id="top-bar" class="container-fluid">
-
         <div class="container">
             <span id="tagline">AS WEIRD AS YOU ARE.</span>
             <span id="logocircle">
@@ -47,13 +46,10 @@
     <div class="container">
         <span id="intro">
             <br>
-            <!-- Tired of boring surveys matching you up with boring people? Try Windr and connect with someone who is as
-            weird as you are! -->
             <span style="font-weight:600;">Tired of boring surveys matching you up with boring people?</span>
             <span style="font-weight:300;">Try Windr and connect with someone who is as weird as you are!</span>
         </span>
     </div>
-
 
 
     <section>
@@ -68,8 +64,6 @@
 
         <div class="container">
 
-            <div></div>
-            <div></div>
             <div>
                 <input type="text" id="name" class="form-control" placeholder="YOUR NAME:" required>
             </div>
@@ -332,6 +326,7 @@
             <button id="submit" type="button" class="btn btn-success btn-lg btn-block border-0">SUBMIT</button>
 
         </div>
+        <!-- end container -->
 
         <footer id="quiz-bottom-bar" class="container-fluid">
             <p id="quiz-footer-text">
@@ -339,8 +334,10 @@
                 <span style="font-weight:600;"><a href="https://github.com/LandrumTrev/windr" target="_blank">GITHUB</a></span>
             </p>
         </footer>
+        <!-- end quiz footer -->
 
     </article>
+    <!-- end quizbody -->
 
 
     <footer id="bottom-bar" class="container-fluid">
@@ -349,36 +346,39 @@
             <span style="font-weight:600;"><a href="https://github.com/LandrumTrev/windr" target="_blank">GITHUB</a></span>
         </p>
     </footer>
+    <!-- end no-quiz footer -->
 
 
+    <!-- Modal -->
+    <div id="results-modal" class="modal fade" role="dialog">
 
+        <div class="modal-dialog">
 
+            <!-- Modal content -->
+            <div class="modal-content">
 
-    <!-- <div class="container">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title"><strong>Best Match</strong></h2>
+                </div>
 
-        <div class="jumbotron">
-            <h1><i class="fas fa-coffee" aria-hidden="true"></i> Windr</h1>
-            <hr>
-            <h2>Answer a few basic questions. </h2>
-            <h2>Then find the friend with the greatest compatibility!</h2>
-            <br>
+                <div class="modal-body">
+                    <h2 id="match-name"></h2>
+                    <img id="match-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg"
+                        alt="">
+                </div>
 
-            <div>
-                <a href="/survey"><button type="button" class="btn btn-lg btn-secondary">
-                        <h4><span class="glyphicon glyphicon-list-alt"></span> Go to Survey</h4>
-                    </button></a>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
             </div>
 
         </div>
 
-        <footer class="footer">
-            <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/LandrumTrev/windr">GitHub
-                        Repo</a></p>
-            </div>
-        </footer>
+    </div>
 
-    </div> -->
+
 
     <!-- POPPER JS for BOOTSTRAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

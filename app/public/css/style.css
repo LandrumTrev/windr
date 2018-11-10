@@ -20,7 +20,7 @@ body {
     float: right;
     letter-spacing: .15rem;
     font-weight: 900;
-    color: rgb(121, 150, 162);
+    color: rgb(162, 106, 136);
     font-family: 'Oswald', sans-serif;
     /* SEE MEDIA QUERIES */
 }
@@ -40,13 +40,13 @@ body {
 }
 
 #intro {
-    max-width: 220px;
+    max-width: 215px;
     float: right;
     font-weight: 900;
     font-family: 'Oswald', sans-serif;
     text-align: right;
     color: rgb(101, 125, 135);
-    letter-spacing: .02rem;
+    letter-spacing: .015rem;
     top: 50px;
     right: 0;
     left: 40%;
@@ -65,7 +65,6 @@ body {
 }
 
 #footer-text {
-    /* z-index: 1; */
     position: absolute;
     right: 10px;
     bottom: 0px;
@@ -87,7 +86,6 @@ body {
 }
 
 #quiz-footer-text {
-    /* z-index: 1; */
     position: absolute;
     right: 10px;
     bottom: 0px;
@@ -169,7 +167,6 @@ h2 {
 
 h4 {
     margin: 20px auto 0 auto;
-    /* margin: 20px 55px 0 55px; */
     font-size: 2.1rem;
     font-family: 'Oswald', sans-serif;
     color: rgb(164, 124, 160);
@@ -186,7 +183,6 @@ h5 {
 
 .answersbox {
     margin: -15px auto 0 auto;
-    /* width: 90%; */
 }
 
 .qbox {
@@ -237,10 +233,6 @@ hr {
         padding: 35px 0 0 2px;
         top: 0px;
     }
-
-    /* h4 {
-        margin: 20px 55px 0 55px;
-    } */
 
     #quizbutton {
         top: 100px;
@@ -385,31 +377,15 @@ hr {
 
     h4 {
         font-size: 2.9rem;
-        /* margin: 20px 55px 0 55px; */
     }
 
     #intro {
         font-size: 1.4rem;
         max-width: 590px;
-    }
+        letter-spacing: .02rem;
+}
 
 }
 
 /* MEDIA QUERIES FOR BREAKPOINTS ABOVE */
 /* =================================== */
-
-
-/* input[type="radio"]:checked+label {
-    position: relative;
-    margin: 30px 0 0 25px;
-    font-size: 1.1rem;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 400;
-    color: rgb(131, 67, 127);
-}
-
-input[type="radio"] {
-    position: relative;
-    top: -2px;
-    left: 5px;
-} */
