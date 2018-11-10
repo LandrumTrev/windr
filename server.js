@@ -37,10 +37,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 // allow Express server to server static files from PUBLIC directory
-// is this needed? for external CSS files?
-// app.use(express.static('public'));
-app.use('/css', express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('app/public'));
 
 // REQUIRE ROUTER PATH FUNCTION MODULES
 // =============================================================
