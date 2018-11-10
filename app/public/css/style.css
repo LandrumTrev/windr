@@ -2,7 +2,11 @@ body {
     background-color: #ddd;
 }
 
-#white-top-bar {
+/* BODY STYLES ABOVE */
+/* =================== */
+/* HEADER STYLES BELOW */
+
+#top-bar {
     background-color: rgb(241, 251, 255);
     height: 30px;
     text-align: center;
@@ -12,29 +16,95 @@ body {
 #tagline {
     z-index: 1;
     position: absolute;
-    right: 3%;
-    /* top: 7px; */
-    /* font-size: .7rem; */
-    letter-spacing: .3rem;
+    right: 10px;
+    letter-spacing: .15rem;
     font-weight: 900;
     color: rgb(121, 150, 162);
+    font-family: 'Oswald', sans-serif;
+    /* SEE MEDIA QUERIES */
 }
 
 #logocircle {
     position: absolute;
-    /* top: -100px; */
-    /* left: 10%; */
-    /* height: 200px; */
-    /* width: 200px; */
     background-color: rgb(121, 150, 162);
     border-radius: 50%;
     display: inline-block;
     border: 30px solid rgb(241, 251, 255);
+    /* SEE MEDIA QUERIES */
 }
 
 #logotype {
     position: relative;
-    /* top: 50px; */
+    /* SEE MEDIA QUERIES */
+}
+
+#intro {
+    position: absolute;
+    text-align: right;
+    font-family: 'Oswald', sans-serif;
+    color: rgb(101, 125, 135);
+    letter-spacing: .02rem;
+    top: 50px;
+    right: 15px;
+    left: 40%;
+}
+
+/* HEADER STYLES ABOVE */
+/* =================== */
+/* FOOTER STYLES BELOW */
+
+
+#bottom-bar {
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(241, 251, 255);
+    height: 30px;
+    line-height: 30px;
+    /* text-align: center; */
+    /* padding-top: 2px; */
+}
+
+#footer-text {
+    z-index: 1;
+    position: absolute;
+    right: 10px;
+    letter-spacing: .15rem;
+    font-weight: 900;
+    color: rgb(121, 150, 162);
+    font-family: 'Oswald', sans-serif;
+    /* SEE MEDIA QUERIES */
+}
+
+/* FOOTER STYLES ABOVE */
+/* =================== */
+/* QUIZ BUTTON STYLES BELOW */
+
+#quizbutton {
+    position: absolute;
+    background-color: rgb(162, 106, 136);
+    border-radius: 50%;
+    display: inline-block;
+    border: 30px solid rgb(255, 241, 251);
+    /* SEE MEDIA QUERIES */
+}
+
+#quizme {
+    position: relative;
+    /* SEE MEDIA QUERIES */
+}
+
+
+/* QUIZ BUTTON STYLES ABOVE */
+/* =================== */
+/* SURVEY STYLES BELOW */
+
+#quizbody {
+    position: relative;
+    top: 310px;
+    /* display: block; */
+    display: none;
+    /* background-color: orange; */
+    height: 300px;
 }
 
 h2 {
@@ -83,11 +153,6 @@ input {
     left: 5px;
 }
 
-.radio_group {
-    /* position: relative; */
-    /* margin: 0 auto 0 auto; */
-}
-
 #submit {
     margin: 30px auto 80px auto;
     max-width: 90%;
@@ -98,6 +163,8 @@ input {
     letter-spacing: .15rem;
 }
 
+/* FOOTER STYLES ABOVE */
+/* =================== */
 /* MEDIA QUERIES BELOW */
 
 /* Extra small devices (phones, 575px and down) */
@@ -112,6 +179,19 @@ input {
         margin: 20px auto 0 -10px;
     }
 
+    #quizbutton {
+        top: 100px;
+        left: 5%;
+        height: 150px;
+        width: 150px;
+    }
+
+    #quizme {
+        top: 12px;
+        left: 16px;
+        width: 60px;
+    }
+
     #logocircle {
         top: -75px;
         left: 5%;
@@ -120,8 +200,8 @@ input {
     }
 
     #tagline {
-        top: 8px;
-        font-size: .6rem;
+        top: 7px;
+        font-size: .7rem;
     }
 
     #logotype {
@@ -130,10 +210,27 @@ input {
         width: 55px;
     }
 
+    #intro {
+        font-size: .8rem;
+    }
+
 }
 
 /* Small devices (portrait tablets and large phones, 576px and up) */
 @media only screen and (min-width: 576px) {
+
+    #quizbutton {
+        top: 110px;
+        left: 5%;
+        height: 180px;
+        width: 180px;
+    }
+
+    #quizme {
+        top: 13px;
+        left: 18px;
+        width: 85px;
+    }
 
     #logocircle {
         top: -90px;
@@ -146,17 +243,35 @@ input {
         top: 7px;
         font-size: .7rem;
     }
-    
+
     #logotype {
         top: 65px;
         left: 2px;
         width: 80px;
     }
 
+    #intro {
+        font-size: 1.2rem;
+        left: 35%;
+    }
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+
+    #quizbutton {
+        top: 120px;
+        left: 5%;
+        height: 200px;
+        width: 200px;
+    }
+
+    #quizme {
+        top: 15px;
+        left: 20px;
+        width: 100px;
+    }
 
     #logocircle {
         top: -100px;
@@ -190,6 +305,9 @@ input {
         margin: 20px auto 0 -20px;
     }
 
+    #intro {
+        font-size: 1.4rem;
+    }
 
 }
 
