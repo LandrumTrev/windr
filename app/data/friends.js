@@ -10,7 +10,7 @@
 
 // CONFIRM CONNECTION
 // =====================================================
-console.log("friends.js connected");
+// console.log("friends.js connected");
 
 
 // DATA
