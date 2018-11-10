@@ -35,19 +35,26 @@
 <body>
 
     <header id="top-bar" class="container-fluid">
+
         <div class="container">
             <span id="tagline">AS WEIRD AS YOU ARE.</span>
             <span id="logocircle">
                 <img id="logotype" src="img/windr_logotype.svg" alt="Windr logo">
             </span>
-            <p id="intro">
-                <span style="font-weight:600;">Tired of boring surveys matching you up with boring people?</span>
-                <span style="font-weight:300;">Try Windr and connect with someone who is as weird as you are.</span>
-            </p>
         </div>
-
-
     </header>
+
+    <div class="container">
+        <span id="intro">
+            <br>
+            <!-- Tired of boring surveys matching you up with boring people? Try Windr and connect with someone who is as
+            weird as you are! -->
+            <span style="font-weight:600;">Tired of boring surveys matching you up with boring people?</span>
+            <span style="font-weight:300;">Try Windr and connect with someone who is as weird as you are!</span>
+        </span>
+    </div>
+
+
 
     <section>
         <a id="showquiz" href="#">
@@ -61,17 +68,14 @@
 
         <div class="container">
 
-            <h2 class="text-center">Survey Questions</h2>
-            <hr>
-
+            <div></div>
+            <div></div>
             <div>
-                <h5 class="text-center">YOUR NAME:</h4>
-                    <input type="text" id="name" class="form-control" required>
+                <input type="text" id="name" class="form-control" placeholder="YOUR NAME:" required>
             </div>
-
+            <br>
             <div>
-                <h5 class="text-center">A LINK TO YOUR PHOTO:</h4>
-                    <input type="text" id="photo" class="form-control" required>
+                <input type="text" id="photo" class="form-control" placeholder="A LINK TO YOUR PHOTO:" required>
             </div>
 
             <hr>
@@ -325,7 +329,7 @@
             </div>
             <br>
             <hr>
-            <button id="submit" type="button" class="btn btn-success btn-lg btn-block">SUBMIT</button>
+            <button id="submit" type="button" class="btn btn-success btn-lg btn-block border-0">SUBMIT</button>
 
         </div>
 
