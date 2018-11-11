@@ -7,6 +7,8 @@ body {
 /* HEADER STYLES BELOW */
 
 #top-bar {
+    z-index: -2;
+    position: relative;
     background-color: rgb(241, 251, 255);
     height: 30px;
     text-align: center;
@@ -26,6 +28,7 @@ body {
 }
 
 #logocircle {
+    z-index: -1;
     position: absolute;
     background-color: rgb(121, 150, 162);
     border-radius: 50%;
@@ -40,7 +43,7 @@ body {
 }
 
 #intro {
-    z-index: 1;
+    z-index: 5;
     max-width: 215px;
     float: right;
     font-weight: 900;
@@ -268,6 +271,7 @@ hr {
 
     #intro {
         font-size: .8rem;
+        max-width: 50%;
     }
 
 }
