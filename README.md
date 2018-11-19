@@ -6,7 +6,7 @@
 *Node, Express, JavaScript, jQuery, Heroku deployment, Bootstrap, Font Awesome. Single-page responsive UI MVC personality matching survey web app with modal results.*
 _________________________________________________
 
-[[windr on Heroku](https://intense-falls-25314.herokuapp.com/)](https://intense-falls-25314.herokuapp.com/)
+[[windr on Heroku](https://windr-quiz.herokuapp.com/)](https://windr-quiz.herokuapp.com/)
 
 _________________________________________________
 
